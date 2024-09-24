@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Bem-vindo à Pizzaria Online</h1>
+    </div>
+
+    <div class="product-list">
+        <!-- Os produtos serão gerados dinamicamente aqui -->
+    </div>
+
+    <!-- Botão do carrinho -->
+    <button class="cart-btn" onclick="toggleCartMenu()">🛒 Carrinho (<span id="cart-count">0</span>)</button>
+
+    <!-- Menu lateral do carrinho -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Seu Carrinho</h2>
+            <button class="close-btn" onclick="toggleCartMenu()">✖</button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <label for="bloco-apartamento">Bloco e Apartamento:</label>
+            <input type="text" id="bloco-apartamento" placeholder="Bloco x Apto x">
+        
+            <p>Total: <span id="total-price">R$ 0,00</span></p>
+            <label for="payment-method">Forma de Pagamento:</label>
+            <select id="payment-method">
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="PIX">PIX</option>
+                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                <option value="Cartão de Débito">Cartão de Débito</option>
+            </select>
+            <button onclick="proceedToWhatsApp()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

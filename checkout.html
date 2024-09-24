@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+        <h1>Checkout</h1>
+    </div>
+
+    <div class="cart-page">
+        <h3>Carrinho</h3>
+        <div class="cart-items"></div>
+        
+        <label for="block">Bloco</label>
+        <select id="block">
+            <option value="1">Bloco 1</option>
+            <option value="2">Bloco 2</option>
+            <option value="3">Bloco 3</option>
+        </select>
+        
+        <label for="apartment">Apartamento</label>
+        <select id="apartment">
+            <!-- Gera opções de 101 a 1008 -->
+        </select>
+
+        <input type="text" placeholder="Código de desconto">
+        <div class="total-price">Total: R$ 0,00</div>
+        <button onclick="finalizarCompra()">Finalizar Compra</button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
