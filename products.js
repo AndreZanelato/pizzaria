@@ -2,22 +2,23 @@ const products = [
     {
         id: 1,
         name: "Pizza de Calabresa",
-        description: "Deliciosa pizza com calabresa e cebola.",
+        description: "Deliciosa pizza com calabresa e queijo.",
         price: 35.00,
         image: "calabresa.jpg"
     },
     {
         id: 2,
-        name: "Pizza de Marguerita",
-        description: "Pizza com tomate, manjericão e queijo.",
+        name: "Pizza de Presunto e Queijo",
+        description: "Pizza com tomate, manjericão, presunto e queijo.",
         price: 40.00,
-        image: "marguerita.jpg"
+        image: "presunto-queijo.jpg"
     },
     {
         id: 3,
-        name: "Pizza de Frango com Catupiry",
-        description: "Frango desfiado e catupiry.",
+        name: "Pizza de Frango com Requeijão",
+        description: "Frango desfiado e requeijão.",
         price: 38.00,
-        image: "frango-catupiry.jpg"
+        image: "frango-requeijaocatupiry
+catupiry.jpg"
     }
 ];
