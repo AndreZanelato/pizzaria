@@ -15,7 +15,7 @@ function displayProducts() {
         productElement.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
             <h3>${product.name}</h3>
-            <p>${product.description}</p>
+            <p><strong>Ingredientes:</strong> ${product.description}</p>
             <p>Preço: R$ ${product.price.toFixed(2)}</p>
             <button class="add-to-cart" data-id="${product.id}">Adicionar ao carrinho</button>
         `;

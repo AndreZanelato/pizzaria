@@ -14,13 +14,21 @@ body {
 
 .product {
     border: 1px solid #ccc;
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 5px;
+    padding: 15px;
+    margin: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
 }
 
 .product img {
-    max-width: 100px;
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+.product p {
+    word-wrap: break-word;
+    margin: 0 0 10px;
 }
 
 .product-list {
@@ -123,4 +131,12 @@ body {
     font-size: 1.5rem;
     color: white;
     cursor: pointer;
+}
+
+.add-to-cart {
+    cursor: pointer;
+    background: #ff4500;
+    color: #fff;
+    border-radius: 8px;
+    padding: 5px 10px;
 }
