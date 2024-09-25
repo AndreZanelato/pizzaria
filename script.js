@@ -43,14 +43,18 @@ function addToCart(event) {
     updateCart();
 }
 
-// Atualizar carrinho e exibir total
+// Atualizar carrinho e exibir itens
+// Função para atualizar o carrinho e exibir os itens
 function updateCart() {
     cartItemsElement.innerHTML = ''; // Limpa o conteúdo antigo
     let total = 0;
     let totalItems = 0;
 
-    cart.forEach(item => {
-        cartItemsElement.innerHTML += `<p>${item.name} - Qtd: ${item.quantity} - R$ ${(item.price * item.quantity).toFixed(2)}</p>`;
+    cart.forEach((item, index) => {
+        cartItemsElement.innerHTML += `
+            <p>${item.name} - Qtd: ${item.quantity} - R$ ${(item.price * item.quantity).toFixed(2)}
+            <button class="remove-btn" onclick="removeFromCart(${index})">Remover</button>
+            </p>`;
         total += item.price * item.quantity;
         totalItems += item.quantity;
     });
@@ -64,6 +68,16 @@ function updateCart() {
     } else {
         cartBtn.style.display = 'none';
     }
+}
+
+// Função para remover 1 item do carrinho
+function removeFromCart(index) {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity--; // Reduz a quantidade do item
+    } else {
+        cart.splice(index, 1); // Remove o item se a quantidade for 1
+    }
+    updateCart(); // Atualiza o carrinho após a remoção
 }
 
 // Abrir/fechar o menu lateral do carrinho
@@ -82,7 +96,7 @@ function populateApartmentOptions() {
     }
 }
 
-/// Redirecionar para WhatsApp
+// Redirecionar para WhatsApp
 function proceedToWhatsApp() {
     const paymentMethod = paymentMethodSelect.value;
     const blocoApartamento = document.getElementById('bloco-apartamento').value;
@@ -91,16 +105,17 @@ function proceedToWhatsApp() {
     cart.forEach(item => {
         message += `- ${item.quantity} pizza(s) de ${item.name}\n`;
     });
-    message += ` $Forma de pagamento: ${paymentMethod}\n`;
-    message += ` #Informações de entrega: ${blocoApartamento}\n`;
+    message += `Forma de pagamento: ${paymentMethod}\n`;
+    message += `Informações de entrega: ${blocoApartamento}\n`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/5531999999999?text=${encodedMessage}`;
-    window.location.href = whatsappURL;
+    const whatsappURL = `https://wa.me/5548992046089?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
 }
 
 // Inicializar página de produtos
 document.addEventListener('DOMContentLoaded', () => {
     displayProducts();
     populateApartmentOptions(); // Preencher os apartamentos
+    updateCart(); // Atualizar o carrinho no carregamento
 });

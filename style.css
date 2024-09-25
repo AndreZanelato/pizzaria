@@ -1,24 +1,61 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f6f6f6;
 }
 
 .header {
-    background-color: #ff4500;
-    color: white;
+    background-color: #c41425;
+    color: #fff;
     padding: 1rem;
     text-align: center;
+}
+.header img {
+    max-width: 400px;
+    filter: drop-shadow(0 0 .5rem #fcaf17);
+    cursor: pointer;
+    transition: .5s;
+}
+.header img:hover {
+    transform: scale(1.02);
+}
+
+.submenu {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: center;
+}
+.submenu a {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 0;
+    border-bottom: 1px solid #fff;
+    transition: 1s;
+}
+.submenu a:hover {
+    background-color: #fcaf17;
+    color: #c41425;
+    border-bottom: 1px solid #c41425;
 }
 
 .product {
     border: 1px solid #ccc;
     padding: 15px;
-    margin: 30px;
+    margin: 30px 15px 10px;
     border-radius: 15px;
     text-align: center;
     width: 300px;
+    justify-content: start;
+    background-color: #fff;
+}
+.product:hover {
+    background-color: #fbecee;
 }
 
 .product img {
@@ -39,15 +76,20 @@ body {
 
 .cart-btn {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #28a745;
+    font-weight: bold;
+    font-size: 16px;
+    bottom: 25px;
+    right: 25px;
+    background-color: #fcaf17;
     color: white;
     padding: 10px;
     border: none;
-    border-radius: 50%;
+    border-radius: 8px;
     display: none;
     cursor: pointer;
+}
+.cart-btn:hover {
+    background-color: #c41425;
 }
 
 .cart-page {
@@ -73,18 +115,6 @@ body {
 
 /* Estilos existentes */
 
-.cart-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #28a745;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
 .cart-sidebar {
     position: fixed;
     top: 0;
@@ -104,8 +134,8 @@ body {
 }
 
 .cart-header {
-    padding: 1rem;
-    background-color: #ff4500;
+    padding: 1.75rem;
+    background-color: #c41425;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -135,8 +165,12 @@ body {
 
 .add-to-cart {
     cursor: pointer;
-    background: #ff4500;
+    background: #fcaf17;
     color: #fff;
     border-radius: 8px;
     padding: 5px 10px;
+    transition: .5s;
+}
+.add-to-cart:hover {
+    background: #c41425;
 }
