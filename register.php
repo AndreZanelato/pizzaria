@@ -1,13 +1,17 @@
 <?php
-// Conexão ao banco de dados
-include 'db.php';
+// Incluir o arquivo de conexão com o banco de dados
+require 'db.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
+// Verificar se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Receber os dados do formulário
+    $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
     $bloco = $_POST['bloco'];
     $apartamento = $_POST['apartamento'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+    // Debug: Exibir os dados recebidos
+    echo "Nome: $nome, CPF: $cpf, Bloco: $bloco, Apartamento: $apartamento<br>";
 
     // Verificar se os campos obrigatórios estão preenchidos
     if (!empty($nome) && !empty($cpf) && !empty($bloco) && !empty($apartamento)) {
@@ -48,3 +52,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     echo "Método de requisição inválido.";
 }
+?>
