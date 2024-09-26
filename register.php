@@ -9,11 +9,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $apartamento = $_POST['apartamento'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    // Inserir o novo usuário
-    $sql = "INSERT INTO users (name, cpf, bloco, apartamento, password) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$name, $cpf, $bloco, $apartamento, $password]);
+    // Verificar se os campos obrigatórios estão preenchidos
+    if (!empty($nome) && !empty($cpf) && !empty($bloco) && !empty($apartamento)) {
+        // Conectar ao banco de dados
+        $conn = connectDB();
 
-    echo "Cadastro realizado com sucesso!";
+        // Verificar se o CPF já está cadastrado
+        $checkCpf = $conn->prepare("SELECT * FROM users WHERE cpf = ?");
+        $checkCpf->bind_param("s", $cpf);
+        $checkCpf->execute();
+        $result = $checkCpf->get_result();
+
+        if ($result->num_rows > 0) {
+            // CPF já cadastrado, redirecionar ou exibir mensagem
+            echo "CPF já cadastrado. Faça login.";
+        } else {
+            // Inserir os dados no banco de dados
+            $stmt = $conn->prepare("INSERT INTO users (nome, cpf, bloco, apartamento, role) VALUES (?, ?, ?, ?, 'cliente')");
+            $stmt->bind_param("ssss", $nome, $cpf, $bloco, $apartamento);
+
+            if ($stmt->execute()) {
+                // Redirecionar para a página de login após o cadastro bem-sucedido
+                header("Location: login.php");
+                exit();
+            } else {
+                echo "Erro ao cadastrar. Tente novamente.";
+            }
+
+            // Fechar a declaração
+            $stmt->close();
+        }
+
+        // Fechar a conexão com o banco
+        closeDB($conn);
+    } else {
+        echo "Por favor, preencha todos os campos.";
+    }
+} else {
+    echo "Método de requisição inválido.";
 }
-?>
