@@ -119,3 +119,33 @@ document.addEventListener('DOMContentLoaded', () => {
     populateApartmentOptions(); // Preencher os apartamentos
     updateCart(); // Atualizar o carrinho no carregamento
 });
+
+
+// Abrir modal de login
+function openLoginModal() {
+    document.getElementById('loginModal').style.display = 'flex';
+}
+
+// Abrir modal de cadastro e fechar a de login
+function openSignupModal() {
+    document.getElementById('signupModal').style.display = 'flex';
+}
+
+// Fechar modais
+function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+}
+
+function closeSignupModal() {
+    document.getElementById('signupModal').style.display = 'none';
+}
+
+// Mostrar campo de senha apenas para "pizzafir_admin"
+document.getElementById('cpfField').addEventListener('input', function () {
+    const cpfValue = this.value;
+    if (cpfValue === 'pizzafir_admin') {
+        document.getElementById('passwordField').style.display = 'block';
+    } else {
+        document.getElementById('passwordField').style.display = 'none';
+    }
+});

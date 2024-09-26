@@ -12,12 +12,14 @@ body {
     padding: 1rem;
     text-align: center;
 }
+
 .header img {
     max-width: 400px;
     filter: drop-shadow(0 0 .5rem #fcaf17);
     cursor: pointer;
     transition: .5s;
 }
+
 .header img:hover {
     transform: scale(1.02);
 }
@@ -28,6 +30,7 @@ body {
     gap: 25px;
     justify-content: center;
 }
+
 .submenu a {
     color: #fff;
     font-size: 20px;
@@ -38,6 +41,7 @@ body {
     border-bottom: 1px solid #fff;
     transition: 1s;
 }
+
 .submenu a:hover {
     background-color: #fcaf17;
     color: #c41425;
@@ -54,6 +58,7 @@ body {
     justify-content: start;
     background-color: #fff;
 }
+
 .product:hover {
     background-color: #fbecee;
 }
@@ -88,6 +93,7 @@ body {
     display: none;
     cursor: pointer;
 }
+
 .cart-btn:hover {
     background-color: #c41425;
 }
@@ -98,7 +104,7 @@ body {
     width: 100%;
     padding: 1rem;
     background-color: #fff;
-    box-shadow: 0px -2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
     border-top: 1px solid #ccc;
 }
 
@@ -118,11 +124,12 @@ body {
 .cart-sidebar {
     position: fixed;
     top: 0;
-    right: -300px; /* Inicialmente fora da tela */
+    right: -300px;
+    /* Inicialmente fora da tela */
     width: 300px;
     height: 100%;
     background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -130,7 +137,8 @@ body {
 }
 
 .cart-sidebar.open {
-    right: 0; /* Mostra o menu lateral */
+    right: 0;
+    /* Mostra o menu lateral */
 }
 
 .cart-header {
@@ -171,6 +179,88 @@ body {
     padding: 5px 10px;
     transition: .5s;
 }
+
 .add-to-cart:hover {
     background: #c41425;
+}
+
+
+/* Estilos gerais para os modais */
+.modal {
+    display: none;
+    /* Escondido por padrão */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fundo com opacidade */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal-content h2 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.modal p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.modal p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.modal p a:hover {
+    text-decoration: underline;
 }

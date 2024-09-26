@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -20,9 +21,10 @@
         <nav class="submenu">
             <a href=".">Menu</a>
             <a href="/perfil">Perfil</a>
+            <a href="#" onclick="openLoginModal()">Login</a>
         </nav>
     </div>
-    
+
     <div class="product-list">
         <!-- Os produtos serão gerados dinamicamente aqui -->
     </div>
@@ -40,7 +42,7 @@
         <div class="cart-footer">
             <label for="bloco-apartamento">Bloco e Apartamento:</label>
             <input type="text" id="bloco-apartamento" placeholder="Bloco x Apto x">
-        
+
             <p>Total: <span id="total-price">R$ 0,00</span></p>
             <label for="payment-method">Forma de Pagamento:</label>
             <select id="payment-method">
@@ -50,6 +52,54 @@
                 <option value="Cartão de Débito">Cartão de Débito</option>
             </select>
             <button onclick="proceedToWhatsApp()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login</h2>
+            <form method="post" action="login.php">
+                <label for="cpf">CPF:</label>
+                <input type="text" name="cpf" id="cpfField" required><br>
+
+                <!-- Campo de senha, aparece apenas se CPF for "pizzafir_admin" -->
+                <div id="passwordField" style="display: none;">
+                    <label for="password">Senha:</label>
+                    <input type="password" name="password"><br>
+                </div>
+
+                <button type="submit">Entrar</button>
+            </form>
+            <!-- Link para cadastro -->
+            <p>
+                Caso ainda não tenha uma conta,
+                <a href="#" onclick="openSignupModal(); closeLoginModal()">cadastre-se aqui!</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal de Cadastro -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignupModal()">&times;</span>
+            <h2>Cadastro</h2>
+            <form method="post" action="register.php">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" required><br>
+
+                <label for="cpf">CPF:</label>
+                <input type="text" name="cpf" required><br>
+
+                <label for="bloco">Bloco:</label>
+                <input type="text" name="bloco" required><br>
+
+                <label for="apartamento">Apartamento:</label>
+                <input type="text" name="apartamento" required><br>
+
+                <button type="submit">Cadastrar</button>
+            </form>
         </div>
     </div>
 
