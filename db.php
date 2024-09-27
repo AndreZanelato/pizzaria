@@ -2,7 +2,7 @@
 // Definir as constantes do banco de dados
 define('DB_HOST', 'localhost');   // Host do banco de dados
 define('DB_USER', 'pizzafir_admin');        // Usuário do banco de dados
-define('DB_PASS', '@Ndrezanelat0123');            // Senha do banco de dados
+define('DB_PASS', 'ANdrezanelat0123');            // Senha do banco de dados
 define('DB_NAME', 'pizzafir_db');    // Nome do banco de dados
 
 // Função para conectar ao banco de dados
@@ -25,3 +25,4 @@ function connectDB() {
 function closeDB($conn) {
     $conn->close();
 }
+

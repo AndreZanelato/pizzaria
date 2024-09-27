@@ -1,34 +1,35 @@
 <?php
 session_start();
-include 'db.php';
+require 'db.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cpf = $_POST['cpf'];
-    $password = $_POST['password'] ?? null;
 
-    // Buscar o usuário pelo CPF
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE cpf = ?");
-    $stmt->execute([$cpf]);
-    $user = $stmt->fetch();
+    // Conectar ao banco de dados
+    $conn = connectDB();
 
-    if ($user) {
-        if ($cpf === 'pizzafir_admin') {
-            // Verifica a senha apenas para o administrador
-            if (password_verify($password, $user['password'])) {
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['role'] = $user['role'];
-                header('Location: admin.php');
-            } else {
-                echo "Senha incorreta!";
-            }
-        } else {
-            // Login para clientes apenas com o CPF
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['role'] = $user['role'];
-            header('Location: index.php');
-        }
+    // Verificar se o CPF existe e buscar os pontos do usuário
+    $stmt = $conn->prepare("SELECT id, user_name, points FROM users WHERE cpf = ?");
+    $stmt->bind_param("s", $cpf);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        
+        // Guardar os dados na sessão
+        $_SESSION['user_name'] = $user['user_name'];
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['pontos'] = $user['points']; // Guardar os pontos na sessão
+
+        // Redirecionar para a página inicial
+        header("Location: index.php");
+        exit();
     } else {
-        echo "Usuário não encontrado!";
+        echo "CPF não encontrado. Verifique os dados ou cadastre-se.";
     }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>

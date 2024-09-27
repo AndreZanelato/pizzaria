@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -21,7 +25,13 @@
         <nav class="submenu">
             <a href=".">Menu</a>
             <a href="/perfil">Perfil</a>
-            <a href="#" onclick="openLoginModal()">Login</a>
+
+            <!-- Exibir saudação e pontos -->
+            <?php if (isset($_SESSION['user_name'])): ?>
+                <span>Olá, <?php echo $_SESSION['user_name']; ?>! Você possui <?php echo $_SESSION['pontos']; ?> pontos.</span>
+            <?php else: ?>
+                <a href="#" onclick="openLoginModal()">Login</a>
+            <?php endif; ?>
         </nav>
     </div>
 
